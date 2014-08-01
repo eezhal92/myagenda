@@ -33,9 +33,15 @@ gem 'cancan', '~> 1.6.10'
 # To put app online on heroku
 gem 'heroku', '~> 3.9.6'
 
-group :development do
+group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  # gem 'rspec-rails', '~>2.0'
+end
+
+group :test do
+  # Use capybara
+  # gem 'capybara', '~>2.1.0'
 end
 
 group :production do
