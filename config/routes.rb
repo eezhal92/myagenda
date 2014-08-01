@@ -1,4 +1,6 @@
 Myagenda::Application.routes.draw do
+  root 'agendas#index'
+  devise_for :users
   resources :agendas
 
   # The priority is based upon order of creation: first created -> highest priority.
