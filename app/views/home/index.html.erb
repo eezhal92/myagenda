@@ -1,33 +1,35 @@
-<h1>My Agenda! Share your activity...</h1>
+<!-- if user not signed in, render partial view contain sign up and login -->
+<!-- if user signed in, root to agendas... -->
 
-<h2>Sign up for free</h2>
 
-<%= form_for User.new, :url => user_registration_path do | f |%>
-	<div class="field">
-		<%= f.label :email %>
-		<%= f.text_field :email %>
+
+
+<% if user_signed_in? %>
+	Hello <%= current_user.email %><br>	
+<% else %>	
+	<div >
+		<h2>Sign up for free. <i>Join <%= @users.count %> people around the world!</i></h2>
+
+		<%= form_for User.new, :url => user_registration_path do | f |%>
+			<div class="field">
+				<%= f.label :email %>
+				<%= f.text_field :email %>
+			</div>
+
+			<div class="field">
+				<%= f.label :password %>
+				<%= f.password_field :password %>
+			</div>
+
+			<div class="field">
+				<%= f.label :password_confirmation %>
+				<%= f.password_field :password_confirmation %>
+			</div>
+
+			<div class="field">
+				<%= f.submit "Sign me up" %>		
+			</div>
+
+		<% end %>
 	</div>
-
-	<div class="field">
-		<%= f.label :password %>
-		<%= f.password_field :password %>
-	</div>
-
-	<div class="field">
-		<%= f.label :password_confirmation %>
-		<%= f.password_field :password_confirmation %>
-	</div>
-
-	<div class="field">
-		<%= f.submit "Sign me up" %>		
-	</div>
-
 <% end %>
-
-<b>user</b>
-
-<ul>
-	<% @users.each do | u | %>
-		<li><%= u.email %></li>
-	<% end %>
-</ul>

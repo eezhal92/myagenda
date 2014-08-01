@@ -33,10 +33,11 @@ gem 'cancan', '~> 1.6.10'
 # To put app online on heroku
 gem 'heroku', '~> 3.9.6'
 
+gem 'mailcatcher'
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
-  gem ' mailcatcher'
+  gem 'sqlite3'  
   # gem 'rspec-rails', '~>2.0'
 end
 

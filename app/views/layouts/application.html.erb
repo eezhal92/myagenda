@@ -8,9 +8,40 @@
 </head>
 <body>
 
-<p><%= notice %></p>
-<p><%= alert %></p>
-<%= yield %>
+	<div id="container" style="width: 960px; margin: 0 auto; margin-top: 20px;">
 
+		<div style="width: 100%; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #ccc; overflow: hidden;">
+			<div class="logo" style="float:left; margin-right: 25px; font-size: 24px; height: 26px; ">
+				<%= link_to "MyAgenda",  root_path, style: 'font-style: italic; text-decoration: none;' %>	
+			</div>
+			<div class="menu" style="float:left; overflow: hidden; width: 80%;">
+				<% if user_signed_in? %>
+					<div class="menu-left" style="float: left;">
+						<%= link_to "+ New Agenda",  new_agenda_path %> | 
+					 	<%= link_to "Agendas",  agendas_path %>
+					</div>	
+					<div class="menu-right" style="float: right;">						
+					 	<%= link_to "Log out",  destroy_user_session_path, method: :delete %>					
+					</div>			 
+				<% else %>
+					<%= form_for(:user, :url => session_path(:user)) do |f| %>			  
+					  <%= f.label "Login:" %>
+					  <%= f.text_field :email %>
+					  <%= f.password_field :password %>
+					  <%= f.check_box :remember_me %>
+					  <%= f.label :remember_me %>
+					  <%= f.submit 'Sign in' %>
+					  <%= link_to "Forgot your password?", new_password_path(:user) %>
+					<% end %>	
+				<% end %>	
+			</div>
+		</div>
+
+		<% if notice %> <p style="padding: 10px; background-color: #eee;"><%= notice %></p> <% end %>
+		<% if alert %> <p style="padding: 10px; background-color: #FF8080;"><%= alert %></p> <% end %>
+
+		<%= yield %>
+
+	</div>
 </body>
 </html>
