@@ -1,18 +1,25 @@
 <!-- if user not signed in, render partial view contain sign up and login -->
 <!-- if user signed in, root to agendas... -->
 
-
-
-
 <% if user_signed_in? %>
-	Hello <%= current_user.email %><br>	
-<% else %>	
-	<div >
-		<h2>Sign up for free. <i>Join <%= @users.count %> people around the world!</i></h2>
+	Hello, <%= current_user.email %>! Thanks for coming back.<br>	
+<% else %>
+	<div id="newest-agenda">
+		<% @agendas.each do |agenda| %>
+		<div class="item">
+			<h4><%= agenda.title %> in <%= agenda.place %></h4>
+			<small>When: <i> <%= agenda.when %></i></small>
+			<p><%= agenda.description %></p>
+			<code>By: <%= agenda.user.email %></code>
+		</div>
+		<% end %>
+	</div>	
+	<div id="registration-form">
+		<h2 class="headline">Sign up for free. <br><small><i>Join <%= @users_count %> people around the world!</i></small></h2>
 
 		<%= form_for User.new, :url => user_registration_path do | f |%>
 			<div class="field">
-				<%= f.label :email %>
+				<%= f.label :email %> 
 				<%= f.text_field :email %>
 			</div>
 
@@ -27,7 +34,7 @@
 			</div>
 
 			<div class="field">
-				<%= f.submit "Sign me up" %>		
+				<%= f.submit "Sign up" %>		
 			</div>
 
 		<% end %>

@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
 
 	def index
-		@users = User.all
+		@user_count = User.all.count
+		@agendas = Agenda.all
 	end
 end

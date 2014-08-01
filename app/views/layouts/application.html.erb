@@ -6,21 +6,101 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
+<style type="text/css">
+ 	#container { 
+ 	  width: 960px; 
+ 	  margin: 0 auto; 
+ 	  margin-top: 20px; 
+ 	}
+
+ 	#header { 
+ 	  width: 100%; 
+ 	  margin-bottom: 10px; 
+ 	  padding-bottom: 10px; 
+ 	  border-bottom: 1px solid #ccc; 
+ 	  overflow: hidden;
+ 	}
+
+ 	#logo {
+ 	  float:left;
+ 	  margin-right: 25px;
+ 	  font-size: 24px;
+ 	  height: 26px;
+ 	}
+
+ 	#logo a {
+ 	  font-style: italic; 
+ 	  text-decoration: none;
+ 	}
+
+ 	#header .menu {
+ 	  float: right; 
+ 	  text-align: right;
+ 	  overflow: hidden; 
+ 	  width: 80%;
+
+ 	}
+
+ 	#newest-agenda {
+ 	  width: 60%;	
+ 	  float: left;
+ 	}
+
+ 	#newest-agenda .item {
+ 	  border-bottom: 1px solid #eee;
+ 	  margin-bottom: 10px;
+ 	  padding: 10px 20px;
+ 	}
+
+ 	#registration-form {
+ 	  width: 33%;
+ 	  float: right;
+ 	  padding-left: 20px;
+ 	  text-align: right;
+ 	  border-left: 1px solid #eee;
+ 	}
+
+ 	#registration-form .headline{
+ 		line-height: 20px;
+ 	}
+
+ 	.menu-left {
+ 	  float: left;
+ 	}
+
+ 	.menu-right {
+ 	  float: right;
+ 	}
+
+ 	.alert {
+ 	  padding: 10px; 
+ 	}
+
+ 	.alert.grey {
+ 	  background-color: #eee;
+ 	}
+
+ 	.alert.red {
+ 	  background-color: #FF8080;
+ 	}
+
+
+</style>
 <body>
 
-	<div id="container" style="width: 960px; margin: 0 auto; margin-top: 20px;">
+	<div id="container">
 
-		<div style="width: 100%; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #ccc; overflow: hidden;">
-			<div class="logo" style="float:left; margin-right: 25px; font-size: 24px; height: 26px; ">
-				<%= link_to "MyAgenda",  root_path, style: 'font-style: italic; text-decoration: none;' %>	
+		<div id="header">
+			<div id="logo">
+				<%= link_to "MyAgenda",  root_path %>	
 			</div>
-			<div class="menu" style="float:left; overflow: hidden; width: 80%;">
+			<div class="menu">
 				<% if user_signed_in? %>
-					<div class="menu-left" style="float: left;">
+					<div class="menu-left">
 						<%= link_to "+ New Agenda",  new_agenda_path %> | 
 					 	<%= link_to "Agendas",  agendas_path %>
 					</div>	
-					<div class="menu-right" style="float: right;">						
+					<div class="menu-right">						
 					 	<%= link_to "Log out",  destroy_user_session_path, method: :delete %>					
 					</div>			 
 				<% else %>
@@ -37,8 +117,8 @@
 			</div>
 		</div>
 
-		<% if notice %> <p style="padding: 10px; background-color: #eee;"><%= notice %></p> <% end %>
-		<% if alert %> <p style="padding: 10px; background-color: #FF8080;"><%= alert %></p> <% end %>
+		<% if notice %> <p class="alert grey"><%= notice %></p> <% end %>
+		<% if alert %> <p class="alet red"><%= alert %></p> <% end %>
 
 		<%= yield %>
 

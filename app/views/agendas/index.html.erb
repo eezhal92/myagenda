@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th>No. </th>
       <th>Title</th>
       <th>When</th>
       <th>Place</th>
@@ -15,8 +16,9 @@
   </thead>
 
   <tbody>
-    <% @agendas.each do |agenda| %>
+    <% @agendas.each_with_index do |agenda, index| %>
       <tr>
+        <td><%= index + 1 %></td>
         <td><%= agenda.title %></td>
         <td><%= agenda.when %></td>
         <td><%= agenda.place %></td>        
