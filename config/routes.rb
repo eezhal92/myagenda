@@ -1,5 +1,5 @@
 Myagenda::Application.routes.draw do
-  root 'agendas#index'
+  root 'home#index'
   devise_for :users
   resources :agendas
 

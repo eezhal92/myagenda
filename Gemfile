@@ -36,6 +36,7 @@ gem 'heroku', '~> 3.9.6'
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  gem ' mailcatcher'
   # gem 'rspec-rails', '~>2.0'
 end
 
