@@ -52,10 +52,14 @@
  	  padding: 10px 20px;
  	}
 
- 	#registration-form {
+ 	.item h4 {
+ 		margin-top: 0px;
+ 	}
+
+ 	#registration-form, #user-profile {
  	  width: 33%;
  	  float: right;
- 	  padding-left: 20px;
+ 	  padding: 10px 0 10px 20px;
  	  text-align: right;
  	  border-left: 1px solid #eee;
  	}
@@ -100,8 +104,9 @@
 						<%= link_to "+ New Agenda",  new_agenda_path %> | 
 					 	<%= link_to "Agendas",  agendas_path %>
 					</div>	
-					<div class="menu-right">						
-					 	<%= link_to "Log out",  destroy_user_session_path, method: :delete %>					
+					<div class="menu-right">	
+						<a><%= current_user.email %></a> | 
+					 	<%= link_to "Log out",  destroy_user_session_path, method: :delete %>		
 					</div>			 
 				<% else %>
 					<%= form_for(:user, :url => session_path(:user)) do |f| %>			  

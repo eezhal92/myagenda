@@ -1,11 +1,12 @@
 class AgendasController < ApplicationController
   before_action :set_agenda, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show, :index]  
+  before_filter :check_owner, except: [:show, :index, :new, :create]  
 
   # GET /agendas
   # GET /agendas.json
   def index
-    @agendas = Agenda.all
+    @agendas = current_user.agendas.all
   end
 
   # GET /agendas/1
@@ -19,8 +20,7 @@ class AgendasController < ApplicationController
   end
 
   # GET /agendas/1/edit
-  def edit
-    
+  def edit      
   end
 
   # POST /agendas
@@ -67,6 +67,12 @@ class AgendasController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_agenda
       @agenda = Agenda.find(params[:id])
+    end
+
+    def check_owner
+      if @agenda.user.id != current_user.id        
+        redirect_to agendas_path
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
