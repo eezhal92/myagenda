@@ -1,6 +1,6 @@
 class AgendasController < ApplicationController
   before_action :set_agenda, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:show, :index]
+  before_action :authenticate_user!, except: [:show, :index]  
 
   # GET /agendas
   # GET /agendas.json
@@ -20,12 +20,13 @@ class AgendasController < ApplicationController
 
   # GET /agendas/1/edit
   def edit
+    
   end
 
   # POST /agendas
   # POST /agendas.json
   def create
-    @agenda = Agenda.new(agenda_params)
+    @agenda = current_user.agendas.new(agenda_params)
 
     respond_to do |format|
       if @agenda.save
@@ -72,4 +73,5 @@ class AgendasController < ApplicationController
     def agenda_params
       params.require(:agenda).permit(:title, :when, :place, :description)
     end
+
 end
