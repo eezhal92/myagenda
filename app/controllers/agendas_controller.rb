@@ -2,7 +2,7 @@ class AgendasController < ApplicationController
   before_action :set_agenda, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show, :index]  
   before_filter :check_owner, except: [:show, :index, :new, :create]
-
+  load_and_authorize_resource
 
   # GET /agendas
   # GET /agendas.json
@@ -22,8 +22,8 @@ class AgendasController < ApplicationController
 
   # GET /agendas/1/edit
   def edit
-    #testing purpose, will be removed after get real module
-    authorize! :edit, @agenda, :message => "You don't have permission"
+    # testing purpose, will be removed after get real module
+    # authorize! :edit, @agenda, :message => "You don't have permission"
   end
 
   # POST /agendas

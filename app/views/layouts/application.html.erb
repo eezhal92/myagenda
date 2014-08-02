@@ -103,6 +103,9 @@
 					<div class="menu-left">
 						<%= link_to "+ New Agenda",  new_agenda_path %> | 
 					 	<%= link_to "Agendas",  agendas_path %>
+					 	<% if can? :read, @users %>
+						  | <%= link_to "Users", users_path %>
+						<% end %>
 					</div>	
 					<div class="menu-right">	
 						<a><%= current_user.email %></a> | 
