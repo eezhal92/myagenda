@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140801023548) do
+ActiveRecord::Schema.define(version: 20140802090801) do
 
   create_table "agendas", force: true do |t|
     t.string   "title"
@@ -21,6 +21,10 @@ ActiveRecord::Schema.define(version: 20140801023548) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+  end
+
+  create_table "roles", force: true do |t|
+    t.string "name"
   end
 
   create_table "users", force: true do |t|
@@ -40,6 +44,7 @@ ActiveRecord::Schema.define(version: 20140801023548) do
     t.string   "unconfirmed_email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "role_id"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

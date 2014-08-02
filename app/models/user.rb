@@ -5,4 +5,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable #, :confirmable
 
   has_many :agendas 
+
+  belongs_to :role
+
+
+  # @parama = string (administrator or general_user)
+  def has_role?(role)
+   	self.role.name == role   	
+  end
 end
