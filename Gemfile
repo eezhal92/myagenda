@@ -35,6 +35,8 @@ gem 'heroku', '~> 3.9.6'
 
 gem 'mailcatcher'
 
+gem 'carrierwave', '~> 0.10.0'
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'  
