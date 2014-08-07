@@ -9,6 +9,7 @@
       <th>Place</th>
       <th>Description</th>
       <th>Owner</th>
+      <th>Link</th>
       <th></th>
       <th></th>
       <th></th>
@@ -24,6 +25,7 @@
         <td><%= agenda.place %></td>        
         <td><%= agenda.description %></td>
         <td><%= agenda.user.email %></td>
+        <td><%= link_to "Download Picture", agenda.attachment.url %></td>
         <td><%= link_to 'Show', agenda %></td>
         <td><%= link_to 'Edit', edit_agenda_path(agenda) %></td>
         <td><%= link_to 'Destroy', agenda, method: :delete, data: { confirm: 'Are you sure?' } %></td>

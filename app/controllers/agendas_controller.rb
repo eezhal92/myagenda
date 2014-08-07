@@ -2,8 +2,9 @@ class AgendasController < ApplicationController
   before_action :set_agenda, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show, :index]  
   before_filter :check_owner, except: [:show, :index, :new, :create]
-  load_and_authorize_resource
 
+  load_and_authorize_resource
+  skip_load_resource :only => [:create]
   # GET /agendas
   # GET /agendas.json
   def index
@@ -80,7 +81,7 @@ class AgendasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def agenda_params
-      params.require(:agenda).permit(:title, :when, :place, :description)
+      params.require(:agenda).permit(:title, :when, :place, :description, :attachment)
     end
 
 end
